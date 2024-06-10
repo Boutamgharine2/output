@@ -7,9 +7,10 @@ import (
 func PrintFlag(inputFile, outputFile *os.File, v []string) {
 	var char []string
 	var chars [][]string
+	n := ""
 	if Checker(v) {
 		for k := 0; k < len(v)-1; k++ {
-			outputFile.WriteString("\n")
+			n+="\n"
 		}
 		return
 	}
@@ -18,7 +19,7 @@ func PrintFlag(inputFile, outputFile *os.File, v []string) {
 		r := []rune(word)
 		if word == "" {
 
-			outputFile.WriteString("\n")
+			n+="\n"
 
 			continue
 		}
@@ -29,10 +30,10 @@ func PrintFlag(inputFile, outputFile *os.File, v []string) {
 		}
 		for i := 0; i < 8; i++ {
 			for j := 0; j < len(chars); j++ {
-				outputFile.WriteString(chars[j][i])
+				n+=chars[j][i]
 			}
 
-			outputFile.WriteString("\n")
+			n+="\n"
 
 		}
 	}

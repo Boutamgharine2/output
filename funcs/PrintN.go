@@ -1,25 +1,25 @@
 package ascii
 
 import (
-	"fmt"
 	"os"
 )
 
-func PrintN(inputfile *os.File, v []string) {
+func PrintN(inputfile *os.File, v []string) string{
 	var char []string
 	var chars [][]string
+	var n string
 	if Checker(v) {
 		for k := 0; k < len(v)-1; k++ {
-			fmt.Println()
+			n+="\n"
 		}
-		return
+		
 	}
 
 	for _, word := range v {
 		r := []rune(word)
 		if word == "" {
 
-			fmt.Println()
+			n+="\n"
 
 			continue
 		}
@@ -30,12 +30,13 @@ func PrintN(inputfile *os.File, v []string) {
 		}
 		for i := 0; i < 8; i++ {
 			for j := 0; j < len(chars); j++ {
-				fmt.Print(chars[j][i])
+				n+=chars[j][i]
 			}
 
-			fmt.Println()
+			n+="\n"
 
 		}
 	}
 	defer inputfile.Close()
+	return n
 }

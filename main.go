@@ -15,20 +15,23 @@ func main() {
 	style := Newargs[len(Newargs)-1] + ".txt"
 
 	Filestyle, _ := os.Open(style)
+	h := ascii.PrintN(Filestyle, str)
+
 	if len(Newargs) == 4 {
+		
 		flag.StringVar(&filename, "output", "default", "flag str") // give the file parameters
 		flag.Parse()
+		
 
 		outputFile, err := os.Create(filename)
 
-		ascii.PrintFlag(Filestyle, outputFile, str) // store the resulet in the file
+		outputFile.WriteString(h)
 
 		if err != nil {
 			fmt.Println("Error:", err)
 			return
 		}
-		return
 
 	}
-	ascii.PrintN(Filestyle, str) // print the output in the terminal
+	fmt.Print(h)
 }

@@ -35,7 +35,7 @@ func CheckArgs(args []string) ([]string, []string) {
 	if len(args) == 4 {
 		v := strings.Split(args[1], "=")
 
-		if len(v[0]) != 8 {
+		if len(v[0]) != 8  && len(v) > 1{
 			fmt.Println("You chose the incorrect flag.")
 			os.Exit(3)
 		} else if !strings.HasSuffix(v[1], "txt") {
